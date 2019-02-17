@@ -1,4 +1,4 @@
-# product-list
+# product-list- a sample product page 
 
 ## Project setup
 ```
