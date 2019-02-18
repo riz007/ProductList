@@ -27,7 +27,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <p class="">{{item.price | toTHB}}</p>
+                        <p class="">{{formatPrice(item.price)| toTHB}} </p>
                     </div>
                 </div>
             </div>
@@ -46,6 +46,11 @@ export default {
         format_date(item){
             let CreatedDate = moment(item.created_at);
             return moment(CreatedDate).startOf('day').fromNow(); 
+        },
+
+        formatPrice(value) {
+            let val = (value/1).toFixed(2).replace('.', '.')
+            return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
         }
     },
     name: 'ItemList',
@@ -67,9 +72,10 @@ export default {
 }
 
 .card-title {
-    white-space:pre;
+    white-space:nowrap;
     overflow:hidden;
     text-overflow: ellipsis;
+    display: block;
 }
 
 .card-text-timestamp {
